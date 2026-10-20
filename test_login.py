@@ -24,4 +24,17 @@ def test_login_com_senha_invalida(page):
         page.locator("#password").fill("senha123")
         page.locator("#login-button").click()
 
-        expect(page.locator("[data-test='error']")).to_be_visible()
+        mensagem_erro = page.locator("[data-test='error']")
+        expect(mensagem_erro).to_be_visible()
+        expect(mensagem_erro).to_contain_text("Username and password do not match")
+
+
+def test_login_sem_senha(page):
+      page.goto("https://www.saucedemo.com/")
+
+      page.locator("#user-name").fill("standard_user")
+      page.locator("#login-button").click()
+
+      mensagem_erro = page.locator("[data-test='error']")
+      expect(mensagem_erro).to_be_visible()
+      expect(mensagem_erro).to_contain_text("Password is required")
