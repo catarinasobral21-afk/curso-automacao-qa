@@ -38,3 +38,10 @@ def test_login_sem_senha(page):
       mensagem_erro = page.locator("[data-test='error']")
       expect(mensagem_erro).to_be_visible()
       expect(mensagem_erro).to_contain_text("Password is required")
+
+def validar_mensagem_erro(self):
+        mensagem_erro = self.page.locator("[data-test='error']")
+        expect(mensagem_erro).to_be_visible()
+        expect(mensagem_erro).to_contain_text(
+            "Username and password do not match"
+        )

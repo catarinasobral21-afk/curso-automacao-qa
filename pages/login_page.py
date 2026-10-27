@@ -27,4 +27,9 @@ class LoginPage:
             "https://www.saucedemo.com/inventory.html"
         )    
         
-        
+    def validar_mensagem_erro(self):
+        mensagem_erro = self.page.locator("[data-test='error']")
+        expect(mensagem_erro).to_be_visible()
+        expect(mensagem_erro).to_contain_text(
+            "Username and password do not match"
+        )    
