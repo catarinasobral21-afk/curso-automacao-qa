@@ -8,9 +8,11 @@ def test_login_com_sucesso(page):
     login_page.fazer_login("standard_user", "secret_sauce")
     login_page.validar_login_com_sucesso()
 
-def test_login_com_senha_incorreta(page):
+def test_login_sem_usuario(page):
     login_page = LoginPage(page)
 
     login_page.abrir()
-    login_page.fazer_login("standard_user", "senha_errada")
-    login_page.validar_mensagem_erro()
+    login_page.fazer_login("", "secret_sauce")
+    login_page.validar_mensagem_erro(
+        "Epic sadface: Username is required"
+    )
