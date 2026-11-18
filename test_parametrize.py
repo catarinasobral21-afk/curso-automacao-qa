@@ -6,4 +6,4 @@ import pytest
     "teste999"
 ])
 def test_senhas_invalidas(senha):
-    print(senha)
+    assert senha != ""
