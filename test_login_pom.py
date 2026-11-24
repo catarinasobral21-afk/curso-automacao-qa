@@ -34,3 +34,5 @@ def test_login_com_sucesso(page, usuario, senha):
     login_page.abrir()
     login_page.fazer_login(usuario, senha)
     login_page.validar_login_com_sucesso()
+
+    page.screenshot(path="evidencia_login.png")
