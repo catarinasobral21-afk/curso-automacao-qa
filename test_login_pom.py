@@ -28,7 +28,11 @@ def test_login_com_diferentes_dados(page, usuario, senha, mensagem_esperada):
     ],
     ids=["login_com_sucesso", "login_problem"]
 )
-def test_login_com_sucesso(page, usuario, senha):
+
+
+def test_login_com_sucesso(preparar_navegador, usuario, senha):
+    page = preparar_navegador
+
     login_page = LoginPage(page)
 
     login_page.abrir()
@@ -36,3 +40,12 @@ def test_login_com_sucesso(page, usuario, senha):
     login_page.validar_login_com_sucesso()
 
     page.screenshot(path="evidencia_login.png")
+
+
+
+
+def test_acesso_com_usuario_logado(login_realizado):
+    titulo = login_realizado.locator(".title").inner_text()
+
+    assert titulo == "Products"
+    
